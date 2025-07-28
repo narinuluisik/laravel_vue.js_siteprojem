@@ -26,7 +26,7 @@
             <a class="nav-link" href="/iletisim">İletişim</a>
           </li>
           <li class="nav-item">
-            <a href="/admin/login" class="btn btn-outline-primary px-3 py-2">
+            <a href="/login" class="btn btn-outline-primary px-3 py-2">
               Yönetim Girişi
             </a>
           </li>

@@ -1,19 +1,26 @@
 <template>
-  <div>
-    <Navbar />
+  <component :is="layout">
     <router-view />
-    <Footer />
-  </div>
+  </component>
 </template>
 
 <script>
-import Navbar from './components/layout/Navbar.vue';
-import Footer from './components/layout/Footer.vue';
+import DefaultLayout from './components/layout/DefaultLayout.vue';
+import AuthLayout from './components/layout/AuthLayout.vue';
+import AdminLayout from './components/layout/AdminLayout.vue';
 
 export default {
   components: {
-    Navbar,
-    Footer,
+    DefaultLayout,
+    AuthLayout,
+    AdminLayout,
   },
-};
+  computed: {
+    layout() {
+  const layoutName = this.$route.meta.layout || 'DefaultLayout';
+  return this.$options.components[layoutName] || DefaultLayout;
+}
+
+  }
+}
 </script>

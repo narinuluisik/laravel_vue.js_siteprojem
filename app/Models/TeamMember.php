@@ -9,7 +9,7 @@ class TeamMember extends Model
    protected $fillable = [
         'name',
         'role',
-        'photo',
-        'description',
+        'image',
+        'bio',
     ];
 }
