@@ -1,5 +1,5 @@
 <template>
-  <section class="testimonials-section py-6" style="background: #f6f8fb;">
+  <section class="testimonials-section py-6" style="background: #f6f8fb; padding-top: 100px; padding-bottom: 100px;">
     <div class="container">
       <div class="row mb-5">
         <div class="col-12 text-center">
@@ -55,6 +55,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .testimonials-scroll::-webkit-scrollbar {
   display: none;
@@ -71,5 +72,12 @@ export default {
 
 .section-heading {
   margin-top: 2rem;
+}
+
+/* Alternatif olarak section içindeki boşlukları CSS ile de kontrol edebilirsin: */
+.testimonials-section {
+  /* padding-top ve padding-bottom ile oynayabilirsin */
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 </style>

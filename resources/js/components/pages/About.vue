@@ -30,7 +30,7 @@ export default {
         this.projects = data.projects
         this.team = data.team.map(member => ({
           ...member,
-          position: member.role // API'den gelen 'role' => 'position' olarak eşle
+          position: member.role 
         }))
       })
       .catch(err => console.error(err))

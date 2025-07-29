@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\HomeController;
+
 use App\Http\Controllers\Api\AboutController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\ContactMessageController;
@@ -16,7 +16,7 @@ use App\Http\Controllers\Api\Admin\AdminContactMessageController;
 
 
 Route::middleware('api')->group(function () {
-    Route::get('/slider', [HomeController::class, 'slider']);
+
     Route::get('/about', [AboutController::class, 'index']);
     Route::get('/contact-info', [ContactController::class, 'show']);
     Route::post('/send-message', [ContactMessageController::class, 'store']);

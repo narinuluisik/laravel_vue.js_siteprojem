@@ -1,24 +1,16 @@
 <template>
-  <section class="services py-6 bg-white">
-    <div class="container-xl">
-      <div class="text-center mb-5">
-        <h2 class="section-heading fw-bold mb-3">Hizmetlerimiz</h2>
-        <p class="text-muted mx-auto" style="max-width: 600px;">
-          İşinizi büyütmek için sunduğumuz yenilikçi ve kaliteli çözümler
-        </p>
-      </div>
-
-      <div class="row g-4">
+  <section class="services-section">
+    <div class="container">
+      <h2 class="section-title">Hizmetlerimiz</h2>
+      <div class="services-grid">
         <div
-          class="col-md-6 col-lg-4"
           v-for="(service, index) in services"
           :key="index"
+          class="service-card"
         >
-          <div class="service-card p-4 rounded shadow-sm h-100 text-center">
-            <div class="service-icon mb-3" v-html="service.icon"></div>
-            <h5 class="fw-semibold mb-2">{{ service.title }}</h5>
-            <p class="text-secondary">{{ service.description }}</p>
-          </div>
+          <div class="icon-circle" v-html="service.icon"></div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
         </div>
       </div>
     </div>
@@ -27,94 +19,136 @@
 
 <script>
 export default {
-  name: "Services",
+  name: "ServicesSection",
   data() {
     return {
-    services: [
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="#6366F1" width="48" height="48" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7v6a7 7 0 1 0 14 0v-6a7 7 0 0 0-7-7zm5 13a5 5 0 0 1-10 0v-6a5 5 0 0 1 10 0z"/></svg>`,
-    title: "Özel Yazılım Geliştirme",
-    description:
-      "İhtiyacınıza özel, ölçeklenebilir ve sürdürülebilir yazılım çözümleri.",
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="#10B981" width="48" height="48" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>`,
-    title: "Web Tasarım & Geliştirme",
-    description:
-      "Modern, kullanıcı dostu ve mobil uyumlu web siteleri tasarlıyoruz.",
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="#6366F1" width="48" height="48" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10z"/></svg>`,
-    title: "Danışmanlık & Strateji",
-    description:
-      "İş süreçlerinizi analiz edip, dijital dönüşüm yolunda stratejiler geliştiriyoruz.",
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="#10B981" width="48" height="48" viewBox="0 0 24 24"><path d="M20 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6h16Zm-6 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/></svg>`,
-    title: "Mobil Uygulama Geliştirme",
-    description:
-      "iOS ve Android platformlarına özel kullanıcı deneyimleri tasarlıyoruz.",
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="#6366F1" width="48" height="48" viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/></svg>`,
-    title: "E-Ticaret Çözümleri",
-    description:
-      "Özel ihtiyaçlarınıza uygun, güvenli ve hızlı online satış platformları sunuyoruz.",
-  },
-  {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="#10B981" width="48" height="48" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 14h-2v-2h2Zm0-4h-2V7h2Z"/></svg>`,
-    title: "Siber Güvenlik Hizmetleri",
-    description:
-      "Veri ve altyapı güvenliğinizi sağlamak için gelişmiş koruma çözümleri.",
-  },
-],
-
+      services: [
+        {
+          icon: `<svg fill="#4F46E5" width="40" height="40" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7v6a7 7 0 1 0 14 0v-6a7 7 0 0 0-7-7z"/></svg>`,
+          title: "Özel Yazılım Geliştirme",
+          description:
+            "İhtiyacınıza özel, ölçeklenebilir ve sürdürülebilir yazılım çözümleri sunuyoruz.",
+        },
+        {
+          icon: `<svg fill="#059669" width="40" height="40" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>`,
+          title: "Web Tasarım & Geliştirme",
+          description:
+            "Modern, kullanıcı dostu ve mobil uyumlu web siteleri tasarlıyoruz.",
+        },
+        {
+          icon: `<svg fill="#4338CA" width="40" height="40" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/></svg>`,
+          title: "Danışmanlık & Strateji",
+          description:
+            "İş süreçlerinizi analiz edip, dijital dönüşüm yolunda stratejiler geliştiriyoruz.",
+        },
+        {
+          icon: `<svg fill="#059669" width="40" height="40" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>`,
+          title: "Mobil Uygulama Geliştirme",
+          description:
+            "iOS ve Android platformlarına özel kullanıcı deneyimleri tasarlıyoruz.",
+        },
+        {
+          icon: `<svg fill="#4F46E5" width="40" height="40" viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/></svg>`,
+          title: "E-Ticaret Çözümleri",
+          description:
+            "Özel ihtiyaçlarınıza uygun, güvenli ve hızlı online satış platformları sunuyoruz.",
+        },
+        {
+          icon: `<svg fill="#059669" width="40" height="40" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 14h-2v-2h2Zm0-4h-2V7h2Z"/></svg>`,
+          title: "Siber Güvenlik Hizmetleri",
+          description:
+            "Veri ve altyapı güvenliğinizi sağlamak için gelişmiş koruma çözümleri sunuyoruz.",
+        },
+      ],
     };
   },
 };
 </script>
 
 <style scoped>
-.services {
+.services-section {
+  padding: 80px 20px;
   background-color: #fff;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.section-heading {
-  font-size: 2.8rem;
-  color: #232946;
-  letter-spacing: -1px;
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  color: #1e293b;
+  letter-spacing: -0.02em;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.8rem;
 }
 
 .service-card {
-  transition: all 0.3s ease;
-  cursor: pointer;
   background-color: #f9fafb;
-  border-radius: 12px;
+  border-radius: 18px;
+  padding: 2.5rem 2rem 3rem;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.05);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15);
   background-color: #eef2ff;
+  box-shadow: 0 10px 30px rgb(79 70 229 / 0.3);
+  transform: translateY(-10px);
 }
 
-.service-icon svg {
-  width: 48px;
-  height: 48px;
+.icon-circle {
+  background-color: #e0e7ff;
+  border-radius: 50%;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 12px rgb(79 70 229 / 0.2);
+  transition: background-color 0.3s ease;
 }
 
-.fw-semibold {
-  font-weight: 600;
+.service-card:hover .icon-circle {
+  background-color: #6366f1;
 }
 
-.text-secondary {
-  color: #6b7280;
+.service-card:hover .icon-circle svg {
+  fill: white !important;
+}
 
+.service-card h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  line-height: 1.2;
 }
-.text-muted.mx-auto {
-  margin-bottom: 3rem;
+
+.service-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #475569;
+  text-align: center;
+  max-width: 280px;
 }
-.services-section {
-  margin-top: 80px;
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

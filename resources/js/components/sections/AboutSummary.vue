@@ -106,8 +106,8 @@ export default {
 <style scoped>
 .why-choose {
   background: #f6f8fb;
-  padding-top: 48px;
-  padding-bottom: 48px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .section-heading {

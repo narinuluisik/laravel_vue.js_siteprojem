@@ -14,11 +14,9 @@
             <li><a href="/" class="text-white text-decoration-none">Anasayfa</a></li>
             <li><a href="/hakkimizda" class="text-white text-decoration-none">Hakkımızda</a></li>
             <li><a href="/iletisim" class="text-white text-decoration-none">İletişim</a></li>
-            <li><a href="/projeler" class="text-white text-decoration-none">Projelerimiz</a></li>
+            
           </ul>
         </div>
-      
-     
       </div>
 
       <p class="mb-0">&copy; 2025 NarSoft. Tüm hakları saklıdır.</p>
@@ -34,7 +32,7 @@ export default {
     footerStyle() {
       return {
         background:
-          "linear-gradient(120deg, #1E1E2F 0%, #3B3B5F 100%)", // Koyu mor degrade
+          "linear-gradient(120deg, #2E2F4F 0%, #3B3D80 100%)", 
       };
     },
   },

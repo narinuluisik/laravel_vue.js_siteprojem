@@ -1,17 +1,23 @@
 <template>
   <section class="vision-mission-section">
     <div class="container">
-      <div class="row justify-content-center g-4">
-        <div v-if="vision" class="col-md-6 col-lg-5">
-          <div class="card-box vision">
-            <h4 class="section-title text-primary">Vizyonumuz</h4>
-            <p class="section-text" v-html="formatText(vision)"></p>
+      <div class="row g-4 justify-content-center">
+        <div v-if="vision" class="col-md-6">
+          <div class="info-card vision">
+            <div class="icon-wrapper bg-primary">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h4 class="card-title text-primary">Vizyonumuz</h4>
+            <p class="card-text" v-html="formatText(vision)"></p>
           </div>
         </div>
-        <div v-if="mission" class="col-md-6 col-lg-5">
-          <div class="card-box mission">
-            <h4 class="section-title text-success">Misyonumuz</h4>
-            <p class="section-text" v-html="formatText(mission)"></p>
+        <div v-if="mission" class="col-md-6">
+          <div class="info-card mission">
+            <div class="icon-wrapper bg-success">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h4 class="card-title text-success">Misyonumuz</h4>
+            <p class="card-text" v-html="formatText(mission)"></p>
           </div>
         </div>
       </div>
@@ -34,35 +40,50 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
 .vision-mission-section {
-  background: #f6f8fb;
-  padding: 80px 0; /* Üst ve alt boşluk artırıldı */
+  background: #f5f7fa;
+  padding: 80px 0;
 }
 
-.card-box {
-  background-color: #ffffff;
+.info-card {
+  background: white;
   border-radius: 16px;
-  padding: 32px;
+  padding: 40px 30px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   text-align: center;
-  height: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
-.card-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+.info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
 }
 
-.section-title {
-  font-size: 1.8rem;
+.icon-wrapper {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.card-title {
+  font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 16px;
 }
 
-.section-text {
+.card-text {
   font-size: 1.05rem;
-  line-height: 1.7;
+  line-height: 1.8;
   color: #555;
 }
 </style>

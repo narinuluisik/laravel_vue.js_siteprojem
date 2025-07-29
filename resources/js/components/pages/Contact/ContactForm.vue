@@ -1,8 +1,8 @@
 <template>
   <div>
-    <!-- İletişim Formu Sayfası -->
+   
     <form @submit.prevent="submitForm" class="contact-form p-4 bg-light rounded shadow-sm" style="margin-top: 100px;">
-      <!-- Başlık Rengini Koyu Mor veya Siyah Yapma -->
+     
       <h3 class="mb-3 fw-bold" style="color: #232946;">Bize Ulaşın</h3> <!-- Koyu mor rengini kullandık -->
 
       <div class="mb-3">
@@ -18,7 +18,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="subject" class="form-label">Konu (Opsiyonel)</label>
+        <label for="subject" class="form-label">Konu</label>
         <input type="text" id="subject" v-model="form.subject" class="form-control" :class="{'is-invalid': errors.subject}" />
         <div class="invalid-feedback" v-if="errors.subject">{{ errors.subject[0] }}</div>
       </div>
