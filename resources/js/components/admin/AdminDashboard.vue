@@ -3,8 +3,8 @@
     <h2 class="welcome-message mb-4">Hoşgeldiniz, Yönetim Paneline!</h2>
 
     <h1 class="dashboard-title mb-3">Admin Dashboard</h1>
-    <p class="dashboard-subtitle mb-5">
-      Projenizin genel durumu ve kullanıcı istatistiklerine buradan ulaşabilirsiniz.
+    <p class="dashboard-subtitle mb-4">
+      Projenizin genel durumu ve yönetim istatistiklerine buradan ulaşabilirsiniz.
     </p>
 
     <div class="stats-cards d-flex gap-4 mb-5 flex-wrap">
@@ -13,33 +13,76 @@
         <p class="stat-label">Projeler</p>
       </div>
       <div class="card stat-card p-4 shadow rounded">
-        <h3 class="stat-number">{{ usersCount }}</h3>
-        <p class="stat-label">Kullanıcılar</p>
+        <h3 class="stat-number">{{ teamMembersCount }}</h3>
+        <p class="stat-label">Takım Üyeleri</p>
       </div>
       <div class="card stat-card p-4 shadow rounded">
-        <h3 class="stat-number">{{ ticketsCount }}</h3>
-        <p class="stat-label">Destek Talepleri</p>
+        <h3 class="stat-number">{{ contactMessagesCount }}</h3>
+        <p class="stat-label">Gelen Mesajlar</p>
       </div>
     </div>
 
-    <div class="charts bg-white rounded shadow-sm p-4">
-      <h2 class="chart-title mb-3">Son 7 Gün Ziyaretçi Grafiği</h2>
-      <div class="chart-placeholder text-muted">
-        Grafik burada olacak...
-      </div>
+    <div class="projects-section bg-white rounded shadow-sm p-4">
+      <h4 class="section-title mb-3">Son Projelerimiz</h4>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Başlık</th>
+            <th>Açıklama</th>
+            <th>Görsel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="project in recentProjects" :key="project.id">
+            <td>{{ project.title }}</td>
+            <td>{{ project.description.length > 80 ? project.description.slice(0, 80) + '...' : project.description }}</td>
+            <td>
+              <img
+                v-if="project.image"
+                :src="project.image.trim()"
+                alt="Proje Görseli"
+                class="project-image"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'AdminDashboard',
   data() {
     return {
-      projectsCount: 24, // Örnek veri, backend'den dinamik olabilir
-      usersCount: 128,
-      ticketsCount: 5,
+      projectsCount: 0,
+      teamMembersCount: 0,
+      contactMessagesCount: 0,
+      recentProjects: [],
     };
+  },
+  mounted() {
+    this.fetchStats();
+  },
+  methods: {
+    async fetchStats() {
+      try {
+        const projectsRes = await axios.get('/admin/projects');
+        this.projectsCount = projectsRes.data.length;
+        this.recentProjects = projectsRes.data.slice(-2).reverse();
+
+        const teamRes = await axios.get('/admin/team-members');
+        this.teamMembersCount = teamRes.data.length;
+
+        const messagesRes = await axios.get('/admin/contact-messages');
+        this.contactMessagesCount = messagesRes.data.length;
+      } catch (error) {
+        console.error('İstatistikler yüklenirken hata:', error);
+      }
+    },
   },
 };
 </script>
@@ -51,7 +94,7 @@ export default {
 }
 
 .welcome-message {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #4a90e2;
 }
@@ -71,13 +114,13 @@ export default {
 }
 
 .stat-card {
-  flex: 1 1 200px;
+  flex: 1 1 180px;
   background-color: #f9fafb;
   text-align: center;
 }
 
 .stat-number {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #2563eb;
 }
@@ -88,22 +131,34 @@ export default {
   color: #6b7280;
 }
 
-.charts {
+.projects-section {
   margin-top: 2rem;
 }
 
-.chart-title {
+.section-title {
   font-weight: 600;
   color: #374151;
 }
 
-.chart-placeholder {
-  border: 2px dashed #d1d5db;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  font-style: italic;
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead tr {
+  background-color: #f3f4f6;
+}
+
+.table th, .table td {
+  padding: 12px 15px;
+  border: 1px solid #e5e7eb;
+  vertical-align: middle;
+}
+
+.project-image {
+  max-width: 100px;
+  max-height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
 }
 </style>

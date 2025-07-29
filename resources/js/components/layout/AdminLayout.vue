@@ -1,14 +1,14 @@
 <template>
   <div class="admin-layout">
     <!-- Navbar -->
-    <nav class="navbar px-4">
+   <nav class="navbar px-4">
       <span class="navbar-brand mb-0">🛠️ Admin Paneli</span>
+      <a href="/" target="_blank" class="btn btn-sm btn-primary site-link">🌐 Siteye Git</a>
     </nav>
-
     <!-- Ana Gövde -->
     <div class="main-wrapper d-flex">
       <!-- Sidebar -->
-    <aside class="sidebar">
+  <aside class="sidebar">
   <ul class="nav flex-column px-3 py-4">
     <li class="nav-item mb-2">
       <router-link to="/admin/dashboard" class="nav-link" active-class="active-link">
@@ -20,8 +20,20 @@
         <span class="icon">ℹ️</span> Hakkımızda
       </router-link>
     </li>
+    <li class="nav-item mb-2">
+      <router-link to="/admin/contacts" class="nav-link" active-class="active-link">
+        <span class="icon">📞</span> İletişim Bilgileri
+      </router-link>
+    </li>
+    <li class="nav-item mb-2">
+      <router-link to="/admin/contact-messages" class="nav-link" active-class="active-link">
+        <span class="icon">✉️</span> Gelen Mesajlar
+      </router-link>
+    </li>
   </ul>
 </aside>
+
+
 
       <!-- İçerik + Footer -->
       <div class="content-wrapper d-flex flex-column flex-grow-1">

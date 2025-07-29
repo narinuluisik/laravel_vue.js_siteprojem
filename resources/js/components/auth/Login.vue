@@ -46,7 +46,7 @@ export default {
           password: this.password,
         });
         localStorage.setItem('token', response.data.token);
-        this.$router.push('/admin-dashboard');
+        this.$router.push('/admin/dashboard');
       } catch (err) {
         this.error = 'Email veya şifre hatalı.';
       }
